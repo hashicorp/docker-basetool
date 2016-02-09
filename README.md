@@ -20,7 +20,7 @@ library will pick them up automatically.
 Docker is required for building since the Go compiling happens in a
 container.
 
-`./build.sh <bersion>`
+`./build.sh <version>`
 
 This will build and sign basetool. You could copy the binary, SHA256SUM, and
 signature, and certificate files into your repository and check them in.
