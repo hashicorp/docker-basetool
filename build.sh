@@ -22,15 +22,19 @@ fi
 docker run --rm -v "$PWD":/usr/src/basetool -w /usr/src/basetool \
        golang:latest sh -c "go get -d -v && CGO_ENABLED=0 go build"
 
-# Sign the binary.
-find basetool -type f -exec sh -c 'shasum -a256 $(basename $1) >$1.SHA256SUM' -- {} \;
+# Snag the root certs out of a Debian container.
+docker run --rm -v "$PWD":/usr/src/basetool -w /usr/src/basetool \
+       debian:jessie sh -c "apt-get update && apt-get install -y ca-certificates zip && cd /etc/ssl/certs && zip /usr/src/basetool/basetool-certs.zip *"
+
+# Sign the binary so it can be verified since it's going to be checked in.
+shasum -a256 basetool >basetool.SHA256SUM
 if [ -z $NOSIGN ]; then
     gpg --default-key 348FFC4C --detach-sig *.SHA256SUM
 fi
 
 # Prep the release.
 mkdir -p pkg
-zip -r pkg/docker-basetool_${VERSION}_linux_amd64.zip basetool* certs
+zip -r pkg/docker-basetool_${VERSION}_linux_amd64.zip basetool*
 pushd pkg
 shasum -a256 * > ./docker-basetool_${VERSION}_SHA256SUMS
 if [ -z $NOSIGN ]; then
