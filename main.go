@@ -7,7 +7,7 @@ import (
 	"github.com/mitchellh/cli"
 )
 
-const Version = "0.1.0"
+const Version = "0.0.3"
 
 func main() {
 	c := cli.NewCLI("basetool", Version)
