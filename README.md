@@ -4,7 +4,7 @@ This tool is intended to be built, signed, and checked in to the various
 HashiCorp official Docker image repositories. It's used to bootstrap the
 base images by providing useful functions that would otherwise be hard to
 perform given the pure Dockerfile nature of official builds, and the limited
-set of tools available in BusyBox.
+set of tools available in BusyBox or a Scratch container.
 
 Currently, this only knows how to fetch and verify HashiCorp releases, which
 require SSL which isn't supported by the wget included with BusyBox. It's
