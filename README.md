@@ -12,7 +12,7 @@ written as a standard CLI app, though, so we may add more commands later.
 
 We've also included a set of root certs required to fetch a release and contact
 other APIs on hashicorp.com, such as Checkpoint. These should also be extracted
-into your image and stored at /system/etc/security/cacerts so that the Go TLS
+into your image and stored at `/system/etc/security/cacerts` so that the Go TLS
 library will pick them up automatically.
 
 # Building
