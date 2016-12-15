@@ -7,7 +7,7 @@ perform given the pure Dockerfile nature of official builds, and the limited
 set of tools available in BusyBox or a Scratch container.
 
 Currently, this only knows how to fetch and verify HashiCorp releases, which
-require SSL which isn't supported by the wget included with BusyBox. It's
+require SSL which isn't supported by the `wget` included with BusyBox. It's
 written as a standard CLI app, though, so we may add more commands later.
 
 We've also included a set of root certs required to fetch a release and contact
@@ -17,9 +17,8 @@ library will pick them up automatically.
 
 # Building
 
-Docker is required for building since the Go compiling happens in a
-container.
+Docker is required for building since the Go compiling happens in a container.
 
 `./build.sh`
 
-You can upload this release using `hc-releases -upload pkg/`
+You can upload this release using `hc-releases upload pkg/`
