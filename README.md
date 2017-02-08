@@ -1,5 +1,7 @@
 # HashiCorp Base Tool
 
+**NOTE:** The official HashiCorp images ended up using Alpine as a base, so this is not currently in use. Alpine is easy enough to configure to fetch and verify releases without using any checked-in binaries. See the [Consul Dockerfile](https://github.com/hashicorp/docker-consul/blob/master/0.X/Dockerfile) for an example.
+
 This tool is intended to be built, signed, and checked in to the various
 HashiCorp official Docker image repositories. It's used to bootstrap the
 base images by providing useful functions that would otherwise be hard to
